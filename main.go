@@ -25,20 +25,14 @@ func main() {
 	dh.Connect(&conf, logger)
 	defer dh.DB.Close()
 
-	//dh.DB.AutoMigrate()
+	database.InitMigrations(dh.DB, &conf)
 
 
 	api := router.NewAPI(dh.DB, &conf, logger)
-	api.InitializeRoutes()
+	api.InitializeRoutes() // Run migrations. This will only create tables & fields which don't exist.
 
-	logger.Println("server started on " + conf.ServerAddr)
+	logger.Println("server started on PORT: " + conf.ServerAddr)
 
-	// svr := server.New(mux, conf.ServerAddr)
 	logger.Fatalln(http.ListenAndServe(conf.ServerAddr, nil))
-	//logger.Println("Hello, World!")
-	//if err != nil {
-	//	logger.Fatalf("Error starting server: %v", err.Error())
-	//}
-
 
 }
