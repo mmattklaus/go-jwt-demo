@@ -27,7 +27,6 @@ func main() {
 
 	database.InitMigrations(dh.DB, &conf)
 
-
 	api := router.NewAPI(dh.DB, &conf, logger)
 	api.InitializeRoutes() // Run migrations. This will only create tables & fields which don't exist.
 

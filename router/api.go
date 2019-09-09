@@ -11,11 +11,10 @@ import (
 )
 
 type Config2 struct {
-	Db *gorm.DB
+	Db  *gorm.DB
 	Env *config.Config
 	Log *log.Logger
 }
-
 
 func (c *Config2) InitializeRoutes() {
 	User := models.UserRoutes(c.Db, c.Env, c.Log)
@@ -40,4 +39,3 @@ func (c *Config2) Logger(next http.HandlerFunc) http.HandlerFunc {
 		next(w, r)
 	}
 }
-
