@@ -5,6 +5,10 @@ Hello, world!
 
 I decided to make Go my first language and since most applications I build required some form of client authentication, especially stateless authentication, I decided to do JSON Web Tokens (JWT) authentication with Go. 
 
+## Table of Content
+1. [Project Description](#project-description)
+2. [Setup](#setup) (get it running)
+
 ## Project Description
 I try as much to do separation of concerns. 
 ```bash
@@ -41,7 +45,7 @@ I try as much to do separation of concerns.
 
 - *_database/migrations.go_*: This file contains one simple working function `InitMigrations` which gets called each time you start your app. If you've used database migrations before in other languages/frameworks then you probably have a clue about what is happening here. What this function does simply is creating your database tables the first time you run it (described by your models). You do not have to worry about manually creating your tables using a database tool (e.g PHPMyAdmin). Something to note however is that even though this function gets called each time, [gorm](https://gorm.io/docs/migration.html) **would not** create these tables each time it runs thereby result to errors. Instead the library only updates your database table if there are changes added to your model definition. Again, read their [docs](https://gorm.io/docs/migration.html) if you're not familiar with this.
 
-- *_output/\*_*: This directory contains the final compiled version the app. See setup step 5 for more details. 
+- *_output/\*_*: This directory contains the final compiled version of the app. See setup step 5 for more details. 
 
 ## Setup
 ###### Note: Make sure you've got golang installed on your system. For me, it was Go v1.12.9
@@ -100,4 +104,4 @@ I try as much to do separation of concerns.
     DB_DATABASE="gophers" <br/>
  > Tip: You can extend the application to receive commandline arguments like DB_USERNAME, DB_PASSWORD & DB_NAME which will not require these defaults.
     
-                                          Build with so much :heart:                                       
+Build with so much :heart:                                       
